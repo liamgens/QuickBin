@@ -18,7 +18,9 @@
         <activity android:name=".activities.AddBin" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.DetailedBin" />
-        <activity android:name=".activities.ProfilePage"></activity>
+        <activity
+            android:name=".activities.ProfilePage"
+            android:parentActivityName="com.dev.liamgens.quickbin.activities.ProfilePage"/>
     </application>
 
 </manifest>
