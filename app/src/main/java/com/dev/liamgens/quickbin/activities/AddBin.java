@@ -58,6 +58,9 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
 
     int type = 0;
 
+    double longitude = 0;
+    double latitude = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,8 +180,10 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
                 return;
             }
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            final double longitude = location.getLongitude();
-            final double latitude = location.getLatitude();
+            if(location != null){
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
+            }
 
 
 
