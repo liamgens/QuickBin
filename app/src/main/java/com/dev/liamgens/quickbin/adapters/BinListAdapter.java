@@ -55,7 +55,7 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
         if(bin.get_verifyCounter() >= 5){
             holder.verify.setColorFilter(Color.parseColor("#4CAF50"));
         }else{
-            holder.verify.setColorFilter(Color.parseColor("#000"));
+            holder.verify.setColorFilter(Color.parseColor("#000000"));
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
