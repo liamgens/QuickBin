@@ -18,7 +18,7 @@
         <activity android:name=".activities.AddBin" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.DetailedBin" />
-        <activity android:name=".activities.Profile"></activity>
+        <activity android:name=".activities.ProfilePage"></activity>
     </application>
 
 </manifest>

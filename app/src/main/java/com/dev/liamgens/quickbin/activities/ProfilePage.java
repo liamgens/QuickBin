@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.dev.liamgens.quickbin.R;
 
-public class Profile extends AppCompatActivity {
+public class ProfilePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
