@@ -16,7 +16,8 @@ public class ProfilePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
         _profilePicture = (ImageView) findViewById(R.id.profile_picture);
-        Picasso.with(this).load("https://lh3.googleusercontent.com/Xb_HzSiWAsYDy-9uB03fVlFrAnUx1SRmD2DwB2JAvBBANBvypC03HR8Mnf7RNSg_iu8C8vl3SA=w5760-h3600-rw-no").transform(new CropCircleTransformation()).into(_profilePicture);
+        Picasso.with(this).load("https://lh3.googleusercontent.com/Xb_HzSiWAsYDy-9uB03fVlFrAnUx1SRmD2DwB2JAvBBANBvypC03HR8Mnf7RNSg_iu8C8vl3SA=w5760-h3600-rw-no").
+                transform(new CropCircleTransformation()).into(_profilePicture);
 
     }
 }
