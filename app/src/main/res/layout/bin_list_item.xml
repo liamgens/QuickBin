@@ -18,7 +18,7 @@
             android:padding="4dp"
             android:text="Title"
             android:textColor="#000000"
-            android:textSize="36sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/bin_list_item_description"

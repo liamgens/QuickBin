@@ -150,7 +150,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
         double longitude = location.getLongitude();
         double latitude = location.getLatitude();
 
-        Bin bin = new Bin(0, "ianleshan71", titleString, descriptionString, longitude, latitude, type, "imgur.com", date.toString(), id);
+        Bin bin = new Bin(type, "ianleshan71", titleString, descriptionString, longitude, latitude, 0, "imgur.com", date.toString(), id);
 
         binReference.setValue(bin);
         finish();

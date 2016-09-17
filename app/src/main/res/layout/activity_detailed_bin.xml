@@ -121,6 +121,7 @@
             </LinearLayout>
 
                 <ImageButton
+                    android:id="@+id/detailed_bin_show_on_map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
