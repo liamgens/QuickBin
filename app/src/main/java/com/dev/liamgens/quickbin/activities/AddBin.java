@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.schibstedspain.leku.LocationPickerActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
@@ -137,7 +138,8 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.add_bin_location:
-
+                Intent i = new Intent(this, LocationPickerActivity.class);
+                startActivityForResult(i, 1);
 
                 break;
         }
