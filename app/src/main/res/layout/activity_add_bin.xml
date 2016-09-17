@@ -32,6 +32,12 @@
                 android:hint="Description"
                 android:padding="16dp"/>
 
+            <Button
+                android:id="@+id/add_bin_button"
+                android:text="Add Bin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
     </ScrollView>
