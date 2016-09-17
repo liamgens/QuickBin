@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import com.dev.liamgens.quickbin.R;
 public class BinList extends AppCompatActivity implements View.OnClickListener{
 
 
+    RecyclerView binList;
     FloatingActionButton addBin;
 
     @Override
@@ -21,6 +23,7 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bin_list);
 
+        binList = (RecyclerView) findViewById(R.id.bin_list_recycler_view);
         addBin = (FloatingActionButton) findViewById(R.id.bin_list_add_bin);
         addBin.setOnClickListener(this);
 

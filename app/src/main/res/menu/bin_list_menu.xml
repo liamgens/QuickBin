@@ -4,6 +4,6 @@
         <item android:id="@+id/menu_profile"
             android:icon="@mipmap/ic_launcher"
             android:title="Profile"
-            android:showAsAction="always"/>
+            android:showAsAction="ifRoom"/>
 
 </menu>
