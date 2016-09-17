@@ -55,6 +55,8 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
         Date date = new Date();
         Bin bin = new Bin(0, "ianleshan71", titleString, descriptionString, 43.244, -42.342, 2, "imgur.com", date.toString());
 
-        myRef.push().setValue(bin);
+        DatabaseReference binReference = myRef.push();
+        String id = binReference.getKey();
+        binReference.setValue(bin);
     }
 }

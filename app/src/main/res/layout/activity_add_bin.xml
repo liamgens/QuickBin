@@ -32,6 +32,34 @@
                 android:hint="Description"
                 android:padding="16dp"/>
 
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_bin_radio_group">
+
+                <RadioButton
+                    android:id="@+id/add_bin_radio_button_garbage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Garbage"/>
+
+                <RadioButton
+                    android:id="@+id/add_bin_radio_button_recycling"
+                    android:text="Recycling"
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/add_bin_radio_button_recycling_station"
+                    android:text="Recycling Station"
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
             <Button
                 android:id="@+id/add_bin_button"
                 android:text="Add Bin"
