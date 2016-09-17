@@ -51,11 +51,11 @@ public class ProfilePage extends AppCompatActivity {
                     _level.setText("Level " + profile.get_level());
                     _levelTitle.setText(profile.get_levelTitle());
                    if(_levelTitle.getText().equals("Sapling")){
-                        Picasso.with(getApplicationContext()).load(R.drawable.sapling_icon).transform(new CropCircleTransformation()).into(_levelIcon);
+                        Picasso.with(getApplicationContext()).load(R.drawable.sapling_icon).into(_levelIcon);
                     }else if (_levelTitle.getText().equals("Tree")){
-                        Picasso.with(getApplicationContext()).load(R.drawable.tree_icon).transform(new CropCircleTransformation()).into(_levelIcon);
+                        Picasso.with(getApplicationContext()).load(R.drawable.tree_icon).into(_levelIcon);
                     }else{
-                       Picasso.with(getApplicationContext()).load(R.drawable.seed_icon).transform(new CropCircleTransformation()).into(_levelIcon);
+                       Picasso.with(getApplicationContext()).load(R.drawable.seed_icon).into(_levelIcon);
                    }
                 }
 
