@@ -1,9 +1,11 @@
 package com.dev.liamgens.quickbin.adapters;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.liamgens.quickbin.R;
@@ -21,11 +23,13 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description;
+        public ImageView verify;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.bin_list_item_title);
             description = (TextView) view.findViewById(R.id.bin_list_item_description);
+            verify = (ImageView) view.findViewById(R.id.verify);
         }
     }
 
@@ -47,6 +51,12 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
         final Bin bin = binList.get(position);
         holder.title.setText(bin.get_title());
         holder.description.setText(bin.get_description());
+
+        if(bin.get_verifyCounter() >= 5){
+            holder.verify.setColorFilter(Color.parseColor("#4CAF50"));
+        }else{
+            holder.verify.setColorFilter(Color.parseColor("#000"));
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
