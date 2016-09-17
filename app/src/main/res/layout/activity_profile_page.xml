@@ -42,9 +42,10 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"
             android:id="@+id/level_icon"/>
         <TextView
             android:layout_width="wrap_content"
