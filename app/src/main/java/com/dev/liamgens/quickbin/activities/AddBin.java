@@ -30,6 +30,8 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -196,8 +198,10 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                    Bin bin = new Bin(type, "ianleshan71", titleString, descriptionString, _longitude, _latitude, 0, downloadUrl.toString(), date.toString(), id);
+                    Bin bin = new Bin(type, user.getUid(), titleString, descriptionString, _longitude, _latitude, 0, downloadUrl.toString(), date.toString(), id);
 
                     binReference.setValue(bin);
                     finish();

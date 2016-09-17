@@ -46,6 +46,7 @@ public class Profile {
 
     public void set_level(int _level) {
         this._level = _level;
+        set_level_title();
     }
 
     public void set_level_title(){
