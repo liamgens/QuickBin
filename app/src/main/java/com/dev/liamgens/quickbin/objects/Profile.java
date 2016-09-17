@@ -5,13 +5,19 @@ package com.dev.liamgens.quickbin.objects;
  */
 public class Profile {
 
-    private String _displayName, _profileImg;
+    private String _displayName, _profileImg, _levelTitle;
     private int _level;
+
+    public Profile(){
+
+    }
 
     public Profile(String displayName, String profileImg, int level){
         _displayName = displayName;
         _profileImg = profileImg;
         _level = level;
+        set_level_title();
+
 
     }
 
@@ -37,5 +43,12 @@ public class Profile {
 
     public void set_level(int _level) {
         this._level = _level;
+    }
+
+    public void set_level_title(){
+        int level = get_level();
+        if(level >= 1 && level < 5){ _levelTitle = "Trash"; }
+        else if(level >= 5 && level < 10){ _levelTitle = "Compost"; }
+        else if(level >= 10){ _levelTitle = "Renewable"; }
     }
 }

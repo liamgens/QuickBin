@@ -9,6 +9,10 @@ public class Bin {
     private String _user, _title, _description, _binPicture, _date;
     private double _latitude, _longitude;
 
+    public Bin(){
+
+    }
+
     public Bin(int binType, String user, String title, String description, double longitude, double latitude,
                int verifyCounter, String binPicture, String date){
         _binType = binType;
