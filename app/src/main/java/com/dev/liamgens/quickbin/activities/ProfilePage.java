@@ -9,6 +9,11 @@ import com.dev.liamgens.quickbin.R;
 import com.dev.liamgens.quickbin.objects.Profile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
@@ -18,6 +23,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView _displayName;
     private TextView _levelTitle;
     private TextView _level;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +36,25 @@ public class ProfilePage extends AppCompatActivity {
         _level = (TextView) findViewById(R.id.level);
 
 
+
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             // already signed in
             FirebaseUser user = auth.getCurrentUser();
+            ref = FirebaseDatabase.getInstance().getReference("users/" + user.getUid());
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Profile profile = dataSnapshot.getValue(Profile.class);
+                    _level.setText("Level " + profile.get_level());
+                    _levelTitle.setText(profile.get_levelTitle());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
             Picasso.with(this).load(user.getPhotoUrl()).
                     transform(new CropCircleTransformation()).into(_profilePicture);
