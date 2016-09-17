@@ -1,6 +1,5 @@
 package com.dev.liamgens.quickbin.adapters;
 
-import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;

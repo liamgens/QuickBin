@@ -84,24 +84,23 @@
                 android:layout_weight="2"
                 android:padding="8dp">
 
-                <ImageButton
+                <Button
                     android:id="@+id/add_bin_image"
                     android:layout_weight="1"
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:src="@drawable/ic_add_a_photo_black_24dp"
+                    android:drawableLeft="@drawable/ic_add_a_photo_black_24dp"
+                    android:text="Add picture"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <ImageButton
-                    android:id="@+id/add_bin_location"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_add_location_black_24dp"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"/>
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/add_bin_picture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
