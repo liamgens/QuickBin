@@ -135,6 +135,15 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                     if (mapIntent.resolveActivity(getPackageManager()) != null) {
                         startActivity(mapIntent);
                     }
+
+                    String label = bin.get_title();
+                    String uriBegin = "geo:" + bin.get_latitude() + "," + bin.get_longitude();
+                    String query = bin.get_latitude() + "," + bin.get_longitude() + "(" + label + ")";
+                    String encodedQuery = Uri.encode( query  );
+                    String uriString = uriBegin + "?q=" + encodedQuery;
+                    Uri uri = Uri.parse( uriString );
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri );
+                    startActivity( intent );
                 }
 
                 break;
