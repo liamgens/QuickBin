@@ -35,6 +35,7 @@ import java.util.Date;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.picasso.transformations.CropTransformation;
+import si.virag.fuzzydateformatter.FuzzyDateTimeFormatter;
 
 public class DetailedBin extends AppCompatActivity implements View.OnClickListener {
 
@@ -119,11 +120,12 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
                 usersReference = database.getReference("users/" + bin.get_user());
                 Date datePosted = new Date(bin.get_date());
+                String text = FuzzyDateTimeFormatter.getTimeAgo(getApplicationContext(), datePosted);
 
                 title.setText(bin.get_title());
                 description.setText(bin.get_description());
                 user.setText("Submitted by " + bin.get_user());
-                date.setText(" on " + bin.get_date());
+                date.setText(text);
                 Picasso.with(getApplicationContext()).load(bin.get_binPicture()).into(garbagePicture);
 
             }
