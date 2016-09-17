@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.dev.liamgens.quickbin.R;
 import com.dev.liamgens.quickbin.objects.Bin;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -21,11 +27,15 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
     EditText title, description;
     TextInputLayout titleLayout, descriptionLayout;
     Button addBin;
+    RadioGroup binsRadioGroup;
+    ImageButton addImage, addLocation;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
 
     FirebaseStorage storage;
+
+    int type = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +47,11 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
         titleLayout = (TextInputLayout) findViewById(R.id.add_bin_title_layout);
         descriptionLayout = (TextInputLayout) findViewById(R.id.add_bin_description_layout);
         addBin = (Button) findViewById(R.id.add_bin_button);
+        binsRadioGroup = (RadioGroup) findViewById(R.id.add_bin_radio_group);
+        addImage = (ImageButton) findViewById(R.id.add_bin_image);
+        addLocation = (ImageButton) findViewById(R.id.add_bin_location);
+
+        
 
         addBin.setOnClickListener(this);
 
@@ -45,6 +60,25 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
         myRef = database.getReference("bins");
 
         storage = FirebaseStorage.getInstance();
+        
+        binsRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (radioGroup.getId()){
+                    case R.id.add_bin_radio_button_garbage :
+                        type = 0;
+                        break;
+
+                    case R.id.add_bin_radio_button_recycling :
+                        type = 1;
+                        break;
+
+                    case R.id.add_bin_radio_button_recycling_station :
+                        type = 2;
+                        break;
+                }
+            }
+        });
 
     }
 
@@ -54,6 +88,25 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
         switch (view.getId()){
             case R.id.add_bin_button :
                 saveBin();
+                break;
+            case R.id.add_bin_image :
+
+
+
+                break;
+            case R.id.add_bin_location :
+
+                int PLACE_PICKER_REQUEST = 1;
+                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+
+                try {
+                    startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+
                 break;
         }
 
@@ -81,7 +134,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
         String id = binReference.getKey();
 
         Date date = new Date();
-        Bin bin = new Bin(0, "ianleshan71", titleString, descriptionString, 43.244, -42.342, 2, "imgur.com", date.toString(), id);
+        Bin bin = new Bin(0, "ianleshan71", titleString, descriptionString, 43.244, -42.342, type, "imgur.com", date.toString(), id);
 
         binReference.setValue(bin);
         finish();
