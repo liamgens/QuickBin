@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textColor="#e55ea2"
+                android:id="@+id/been_here"
                 android:padding="15sp"
                 android:textSize="17sp"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"

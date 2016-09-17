@@ -1,11 +1,18 @@
 package com.dev.liamgens.quickbin.activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,12 +40,14 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
     ImageView garbagePicture;
     Toolbar toolbar;
 
+    Button beenHere;
+
     LinearLayout showOnMapButton;
 
     private Bin bin;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_bin);
 
@@ -52,6 +61,33 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
         user = (TextView) findViewById(R.id.user_detailed);
         date = (TextView) findViewById(R.id.date_detailed);
         toolbar = (Toolbar) findViewById(R.id.detailed_bin_toolbar);
+
+        beenHere = (Button) findViewById(R.id.been_here);
+        beenHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(DetailedBin.this)
+                        .setPositiveButton("Yes, I have used it.", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+                        })
+                        .setNegativeButton("No, it doesn't exist.", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -103,4 +139,32 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
             break;
         }
     }
+
+//    public static class BeenHere extends DialogFragment {
+//        @Override
+//        public Dialog onCreateDialog(Bundle savedInstanceState) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//            builder.setPositiveButton("Yes, I have used it.", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//                }
+//            })
+//                    .setNegativeButton("No, it doesn't exist.", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//
+//                        }
+//                    })
+//                    .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                        }
+//                    });
+//         //   AlertDialog dialog = builder.create();
+//
+//            return builder.create();
+//        }
+//    }
 }
