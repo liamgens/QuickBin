@@ -2,6 +2,7 @@ package com.dev.liamgens.quickbin.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView _levelTitle;
     private TextView _level;
     private DatabaseReference ref;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,9 @@ public class ProfilePage extends AppCompatActivity {
         _level = (TextView) findViewById(R.id.level);
         _levelIcon = (ImageView) findViewById(R.id.level_icon);
 
-
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("QuickBin");
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
