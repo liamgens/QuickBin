@@ -25,6 +25,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -71,13 +73,13 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                         .setPositiveButton("Yes, I have used it.", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                editBin(1);
                             }
                         })
                         .setNegativeButton("No, it doesn't exist.", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                editBin(-1);
                             }
                         })
                         .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -148,5 +150,30 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
                 break;
         }
+    }
+
+    public void editBin(final int i){
+
+        reference.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+
+                Bin bin = mutableData.getValue(Bin.class);
+                if (bin == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                bin.set_verifyCounter(bin.get_verifyCounter() + i);
+
+                mutableData.setValue(bin);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+            }
+        });
+
     }
 }
