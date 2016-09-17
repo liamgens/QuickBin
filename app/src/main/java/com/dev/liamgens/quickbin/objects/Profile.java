@@ -10,7 +10,6 @@ public class Profile {
 
     public Profile(){}
 
-
     public Profile(String displayName, int level){
         _displayName = displayName;
         _level = level;
