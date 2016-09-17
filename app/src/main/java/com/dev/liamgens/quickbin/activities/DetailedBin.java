@@ -74,12 +74,17 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 editBin(1);
+                                dialog.dismiss();
                             }
+
                         })
                         .setNegativeButton("No, it doesn't exist.", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                editBin(-1);
+                                if(bin.get_verifyCounter() > 0){
+                                    editBin(-1);
+                                }
+                                dialog.dismiss();
                             }
                         })
                         .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
