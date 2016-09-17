@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -129,6 +130,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                 if (bin != null) {
                     Uri gmmIntentUri = Uri.parse("geo:" + bin.get_latitude() + "," + bin.get_longitude() + "?z=20");
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+
                     mapIntent.setPackage("com.google.android.apps.maps");
                     if (mapIntent.resolveActivity(getPackageManager()) != null) {
                         startActivity(mapIntent);

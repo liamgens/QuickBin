@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Address;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,8 +63,8 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
 
     int type = 0;
 
-    double longitude = 0;
-    double latitude = 0;
+    double _longitude = 0;
+    double _latitude = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,33 +176,16 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte[] data = baos.toByteArray();
 
-
             final DatabaseReference binReference = myRef.push();
             final String id = binReference.getKey();
 
             final Date date = new Date();
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if(location != null){
-                longitude = location.getLongitude();
-                latitude = location.getLatitude();
-            }
-
-
 
 
             StorageReference ref = storageRef.child("bins/" + id);
             UploadTask uploadTask = ref.putBytes(data);
+
+
             Toast.makeText(AddBin.this, "Uploading...", Toast.LENGTH_SHORT).show();
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -212,7 +197,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                    Bin bin = new Bin(type, "ianleshan71", titleString, descriptionString, longitude, latitude, 0, downloadUrl.toString(), date.toString(), id);
+                    Bin bin = new Bin(type, "ianleshan71", titleString, descriptionString, _longitude, _latitude, 0, downloadUrl.toString(), date.toString(), id);
 
                     binReference.setValue(bin);
                     finish();
@@ -225,7 +210,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
     }
 
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int REQUEST_IMAGE_CAPTURE = 2;
 
     private void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -234,13 +219,47 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            imageBitmap = (Bitmap) extras.get("data");
-            picture.setImageBitmap(imageBitmap);
-            takenPicture = true;
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+            Log.d("REQUEST****", " " + requestCode);
+            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                Bundle extras = data.getExtras();
+                imageBitmap = (Bitmap) extras.get("data");
+                picture.setImageBitmap(imageBitmap);
+                takenPicture = true;
+            }
+
+            if (requestCode == 1) {
+                if(resultCode == RESULT_OK){
+                    double latitude = data.getDoubleExtra(LocationPickerActivity.LATITUDE, 0);
+                    Log.d("LATITUDE****", String.valueOf(latitude));
+
+                    _latitude = latitude;
+
+
+
+
+                    double longitude = data.getDoubleExtra(LocationPickerActivity.LONGITUDE, 0);
+                    Log.d("LONGITUDE****", String.valueOf(longitude));
+
+
+
+                    _longitude = longitude;
+
+                    String address = data.getStringExtra(LocationPickerActivity.LOCATION_ADDRESS);
+                    Log.d("ADDRESS****", String.valueOf(address));
+                    String postalcode = data.getStringExtra(LocationPickerActivity.ZIPCODE);
+                    Log.d("POSTALCODE****", String.valueOf(postalcode));
+//                    Bundle bundle = data.getBundleExtra(LocationPickerActivity.TRANSITION_BUNDLE);
+//                    Log.d("BUNDLE TEXT****", bundle.getString("test"));
+                    Address fullAddress = data.getParcelableExtra(LocationPickerActivity.ADDRESS);
+                    Log.d("FULL ADDRESS****", fullAddress.toString());
+                }
+                if (resultCode == RESULT_CANCELED) {
+                    //Write your code if there's no result
+                }
+            }
         }
     }
-}
+
