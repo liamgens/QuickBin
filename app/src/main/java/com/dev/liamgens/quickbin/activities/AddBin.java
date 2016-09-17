@@ -200,6 +200,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
 
                     binReference.setValue(bin);
                     finish();
+                    Toast.makeText(AddBin.this, "Done", Toast.LENGTH_SHORT).show();
                 }
             });
         }

@@ -98,7 +98,6 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
         garbagePicture = (ImageView) findViewById(R.id.garbage_img);
 
-        Picasso.with(this).load("http://www.wcnorthwest.com/Resources_Local/Images/garbage%20can.png").into(garbagePicture);
 
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -109,6 +108,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                 description.setText(bin.get_description());
                 user.setText("Submitted by " + bin.get_user());
                 date.setText(" on " + bin.get_date());
+                Picasso.with(getApplicationContext()).load(bin.get_binPicture()).into(garbagePicture);
 
             }
 
