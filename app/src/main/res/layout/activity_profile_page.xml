@@ -10,10 +10,10 @@
     android:orientation="vertical"
     tools:context=".activities.ProfilePage">
 
-    <android.support.v4.widget.CircleImageView
+    <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/rock"
+        android:src="@mipmap/ic_launcher"
         android:layout_gravity="center"
         android:id="@+id/profile_picture"/>
 
