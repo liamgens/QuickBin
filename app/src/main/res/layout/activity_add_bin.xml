@@ -95,6 +95,17 @@
                     android:paddingLeft="100dp"
                     android:paddingRight="100dp"/>
 
+                <Button
+                    android:id="@+id/add_bin_location"
+                    android:layout_weight="1"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:drawableLeft="@drawable/ic_add_a_photo_black_24dp"
+                    android:text="Add picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"/>
+
             </LinearLayout>
 
             <ImageView
