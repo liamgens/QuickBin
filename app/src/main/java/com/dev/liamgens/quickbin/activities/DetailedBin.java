@@ -124,7 +124,20 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
                 title.setText(bin.get_title());
                 description.setText(bin.get_description());
-                user.setText("Submitted by " + bin.get_user());
+
+                usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Profile profile = dataSnapshot.getValue(Profile.class);
+                        user.setText("Submitted by " + profile.get_displayName());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 date.setText(text);
                 Picasso.with(getApplicationContext()).load(bin.get_binPicture()).into(garbagePicture);
 
