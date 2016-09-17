@@ -1,6 +1,7 @@
 package com.dev.liamgens.quickbin.activities;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.Date;
 public class AddBin extends AppCompatActivity implements View.OnClickListener{
 
     EditText title, description;
+    TextInputLayout titleLayout, descriptionLayout;
     Button addBin;
 
     FirebaseDatabase database;
@@ -32,7 +34,10 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
 
         title = (EditText) findViewById(R.id.add_bin_title);
         description = (EditText) findViewById(R.id.add_bin_description);
+        titleLayout = (TextInputLayout) findViewById(R.id.add_bin_title_layout);
+        descriptionLayout = (TextInputLayout) findViewById(R.id.add_bin_description_layout);
         addBin = (Button) findViewById(R.id.add_bin_button);
+
         addBin.setOnClickListener(this);
 
 
@@ -55,14 +60,30 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
     }
 
     private void saveBin() {
-        String titleString = title.getText().toString();
-        String descriptionString = description.getText().toString();
+        String titleString = title.getText().toString().trim();
+        String descriptionString = description.getText().toString().trim();
 
-        Date date = new Date();
-        Bin bin = new Bin(0, "ianleshan71", titleString, descriptionString, 43.244, -42.342, 2, "imgur.com", date.toString());
+        if(titleString.isEmpty()){
+            titleLayout.setError("You must have a title!");
+            return;
+        }else {
+            titleLayout.setErrorEnabled(false);
+        }
+
+        if(descriptionString.isEmpty()){
+            descriptionLayout.setError("You must have a description!");
+            return;
+        }else {
+            descriptionLayout.setErrorEnabled(false);
+        }
 
         DatabaseReference binReference = myRef.push();
         String id = binReference.getKey();
+
+        Date date = new Date();
+        Bin bin = new Bin(0, "ianleshan71", titleString, descriptionString, 43.244, -42.342, 2, "imgur.com", date.toString(), id);
+
         binReference.setValue(bin);
+        finish();
     }
 }

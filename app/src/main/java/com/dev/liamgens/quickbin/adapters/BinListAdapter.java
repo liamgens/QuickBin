@@ -18,6 +18,7 @@ import java.util.List;
 public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHolder>{
 
     private List<Bin> binList;
+    OnItemClickListener itemClickListener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description;
@@ -44,14 +45,29 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Bin bin = binList.get(position);
+        final Bin bin = binList.get(position);
         holder.title.setText(bin.get_title());
         holder.description.setText(bin.get_description());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClickListener.onItemClick(bin);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return binList.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Bin bin);
+    }
+
+    public void setItemClickListener(OnItemClickListener onItemClickListener){
+        this.itemClickListener = onItemClickListener;
     }
 
 

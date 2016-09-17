@@ -46,7 +46,7 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
         binList.setItemAnimator(new DefaultItemAnimator());
         binList.setAdapter(binListAdapter);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("bins");
 
         myRef.addChildEventListener(new ChildEventListener() {
@@ -75,6 +75,15 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        binListAdapter.setItemClickListener(new BinListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Bin bin) {
+                Intent intent = new Intent(BinList.this, DetailedBin.class);
+                intent.putExtra("binID", bin.get_id());
+                startActivity(intent);
             }
         });
 

@@ -6,7 +6,7 @@ package com.dev.liamgens.quickbin.objects;
 public class Bin {
 
     private int _binType, _verifyCounter;
-    private String _user, _title, _description, _binPicture, _date;
+    private String _user, _title, _description, _binPicture, _date, _id;
     private double _latitude, _longitude;
 
     public Bin(){
@@ -14,7 +14,7 @@ public class Bin {
     }
 
     public Bin(int binType, String user, String title, String description, double longitude, double latitude,
-               int verifyCounter, String binPicture, String date){
+               int verifyCounter, String binPicture, String date, String id){
         _binType = binType;
         _user = user;
         _verifyCounter = verifyCounter;
@@ -24,6 +24,7 @@ public class Bin {
         _longitude = longitude;
         _binPicture = binPicture;
         _date = date;
+        _id = id;
 
     }
 
@@ -106,6 +107,14 @@ public class Bin {
 
     public void set_date(String _date) {
         this._date = _date;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }
 
