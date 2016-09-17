@@ -15,7 +15,6 @@ import com.dev.liamgens.quickbin.R;
 import com.dev.liamgens.quickbin.objects.Bin;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -96,16 +95,6 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.add_bin_location :
 
-                int PLACE_PICKER_REQUEST = 1;
-                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-
-                try {
-                    startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
-                } catch (GooglePlayServicesRepairableException e) {
-                    e.printStackTrace();
-                } catch (GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
-                }
 
                 break;
         }
