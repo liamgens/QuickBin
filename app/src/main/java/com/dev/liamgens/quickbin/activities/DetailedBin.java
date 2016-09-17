@@ -79,7 +79,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 editBin(1);
-                                dialog.dismiss();
+                                //dialog.dismiss();
                             }
 
                         })
@@ -89,7 +89,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                                 if(bin.get_verifyCounter() > 0){
                                     editBin(-1);
                                 }
-                                dialog.dismiss();
+                                //dialog.dismiss();
                             }
                         })
                         .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -113,7 +113,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
 
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 bin = dataSnapshot.getValue(Bin.class);

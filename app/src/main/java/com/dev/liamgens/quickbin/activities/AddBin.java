@@ -55,6 +55,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
     ImageView picture;
 
     boolean takenPicture = false;
+    boolean addedLocation = false;
     Bitmap imageBitmap;
     StorageReference storageRef;
 
@@ -173,6 +174,8 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
         if(!takenPicture){
             Toast.makeText(AddBin.this, "You must take a picture!", Toast.LENGTH_SHORT).show();
             return;
+        }else if(!addedLocation) {
+            Toast.makeText(AddBin.this, "You must add a location!", Toast.LENGTH_SHORT).show();
         }else {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -259,6 +262,8 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
 //                    Log.d("BUNDLE TEXT****", bundle.getString("test"));
                     Address fullAddress = data.getParcelableExtra(LocationPickerActivity.ADDRESS);
                     Log.d("FULL ADDRESS****", fullAddress.toString());
+
+                    addedLocation = true;
                 }
                 if (resultCode == RESULT_CANCELED) {
                     //Write your code if there's no result
