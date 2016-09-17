@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dev.liamgens.quickbin.R;
@@ -32,7 +33,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
     ImageView garbagePicture;
     Toolbar toolbar;
 
-    ImageButton showOnMapButton;
+    LinearLayout showOnMapButton;
 
     private Bin bin;
 
@@ -54,8 +55,9 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("");
 
-        showOnMapButton = (ImageButton) findViewById(R.id.detailed_bin_show_on_map);
+        showOnMapButton = (LinearLayout) findViewById(R.id.detailed_bin_show_on_map);
         showOnMapButton.setOnClickListener(this);
 
         garbagePicture = (ImageView) findViewById(R.id.garbage_img);

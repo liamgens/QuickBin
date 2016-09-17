@@ -114,15 +114,29 @@
                     android:id="@+id/date_detailed"/>
 
 
-                <ImageButton
-                    android:id="@+id/detailed_bin_show_on_map"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+            <LinearLayout
+                android:id="@+id/detailed_bin_show_on_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="bottom"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:src="@drawable/ic_place_black_24dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHOW ON MAP"
+                    android:textColor="@color/colorAccent"/>
+
+            </LinearLayout>
         </LinearLayout>
+
 
     </android.support.v4.widget.NestedScrollView>
 
