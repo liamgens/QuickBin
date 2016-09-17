@@ -98,7 +98,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
         binsRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (radioGroup.getId()) {
+                switch (i) {
                     case R.id.add_bin_radio_button_garbage:
                         type = 0;
                         break;
