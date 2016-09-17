@@ -2,6 +2,7 @@ package com.dev.liamgens.quickbin.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.liamgens.quickbin.R;
@@ -11,6 +12,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
+import jp.wasabeef.picasso.transformations.CropTransformation;
 
 public class DetailedBin extends AppCompatActivity {
 
@@ -19,6 +24,7 @@ public class DetailedBin extends AppCompatActivity {
     DatabaseReference reference;
 
     TextView title, description, user, date;
+    ImageView garbagePicture;
 
 
 
@@ -36,6 +42,10 @@ public class DetailedBin extends AppCompatActivity {
         description = (TextView) findViewById(R.id.description_detailed);
         user = (TextView) findViewById(R.id.user_detailed);
         date = (TextView) findViewById(R.id.date_detailed);
+
+        garbagePicture = (ImageView) findViewById(R.id.garbage_img);
+
+        Picasso.with(this).load("http://www.wcnorthwest.com/Resources_Local/Images/garbage%20can.png").into(garbagePicture);
 
 
         reference.addValueEventListener(new ValueEventListener() {
