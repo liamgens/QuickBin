@@ -11,6 +11,7 @@ import com.dev.liamgens.quickbin.R;
 import com.dev.liamgens.quickbin.objects.Bin;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.Date;
 
@@ -21,6 +22,8 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
 
     FirebaseDatabase database;
     DatabaseReference myRef;
+
+    FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,9 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener{
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("bins");
+
+        storage = FirebaseStorage.getInstance();
+
     }
 
     @Override
