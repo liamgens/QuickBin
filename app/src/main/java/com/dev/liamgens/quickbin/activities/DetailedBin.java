@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
 
     TextView title, description, user, date;
     ImageView garbagePicture;
+    Toolbar toolbar;
 
     ImageButton showOnMapButton;
 
@@ -48,6 +50,11 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
         description = (TextView) findViewById(R.id.description_detailed);
         user = (TextView) findViewById(R.id.user_detailed);
         date = (TextView) findViewById(R.id.date_detailed);
+        toolbar = (Toolbar) findViewById(R.id.detailed_bin_toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         showOnMapButton = (ImageButton) findViewById(R.id.detailed_bin_show_on_map);
         showOnMapButton.setOnClickListener(this);
 
