@@ -35,13 +35,8 @@ public class ProfilePage extends AppCompatActivity {
             // already signed in
             FirebaseUser user = auth.getCurrentUser();
 
-
-
             Picasso.with(this).load(user.getPhotoUrl()).
                     transform(new CropCircleTransformation()).into(_profilePicture);
-
-
-
 
             _displayName.setText(user.getDisplayName());
 
