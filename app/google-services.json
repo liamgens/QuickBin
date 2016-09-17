@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1072351279967",
+    "firebase_url": "https://quickbin-e9141.firebaseio.com",
+    "project_id": "quickbin-e9141",
+    "storage_bucket": "quickbin-e9141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072351279967:android:dc3b7ee5c51f0b2f",
+        "android_client_info": {
+          "package_name": "com.dev.liamgens.quickbin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072351279967-d8e7cc1u35raihodd8sprd5o7vpdvs23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.liamgens.quickbin",
+            "certificate_hash": "4FFCB3B545D52B29A5F78969FD80463B19DE52E5"
+          }
+        },
+        {
+          "client_id": "1072351279967-imuim5vvb53ar85b2jq2ch3irvkqre6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfBfIHQuNHrrjPEuUPrE1y6ie1XUcRhko"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072351279967-imuim5vvb53ar85b2jq2ch3irvkqre6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
