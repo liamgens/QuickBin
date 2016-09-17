@@ -34,6 +34,8 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'jp.wasabeef:picasso-transformations:2.1.0'
     compile 'com.schibstedspain.android:leku:2.1.1'
+    compile 'si.virag:fuzzydateformatter:1.1.0'
+
 
 
 
