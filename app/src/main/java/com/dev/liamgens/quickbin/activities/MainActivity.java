@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                             .createSignInIntentBuilder()
                             .setProviders(
                                     AuthUI.GOOGLE_PROVIDER).setLogo(R.drawable.quick_bin_logo)
+                            .setTheme(R.style.GreenTheme)
                             .build(),
                     RC_SIGN_IN);
         }
