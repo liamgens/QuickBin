@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">QuickBin</string>
+    <string name="google_maps_key">AIzaSyDXrB9sRQxICBXoRiQlMrPeyPDFNTwDbxA</string>
 </resources>
