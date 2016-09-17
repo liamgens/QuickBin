@@ -21,12 +21,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             // already signed in
+            startActivity(new Intent(this, BinList.class));
         } else {
             startActivityForResult(
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setProviders(
-                                    AuthUI.GOOGLE_PROVIDER)
+                                    AuthUI.GOOGLE_PROVIDER).setIsSmartLockEnabled(false)
                             .build(),
                     RC_SIGN_IN);
         }
