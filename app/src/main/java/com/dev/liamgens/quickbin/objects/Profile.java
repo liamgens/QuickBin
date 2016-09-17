@@ -50,9 +50,9 @@ public class Profile {
 
     public void set_level_title(){
         int level = get_level();
-        if(level >= 1 && level < 5){ _levelTitle = "Trash"; }
-        else if(level >= 5 && level < 10){ _levelTitle = "Compost"; }
-        else if(level >= 10){ _levelTitle = "Renewable"; }
+        if(level >= 1 && level < 5){ _levelTitle = "Seed"; }
+        else if(level >= 5 && level < 10){ _levelTitle = "Sapling"; }
+        else if(level >= 10){ _levelTitle = "Tree"; }
     }
     public String get_levelTitle() {
         return _levelTitle;
