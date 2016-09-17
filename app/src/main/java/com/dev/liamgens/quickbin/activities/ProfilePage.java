@@ -25,7 +25,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView _levelTitle;
     private TextView _level;
     private DatabaseReference ref;
-    private Toolbar toolbar;
+    private Toolbar _toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,12 @@ public class ProfilePage extends AppCompatActivity {
         _levelTitle = (TextView) findViewById(R.id.level_title);
         _level = (TextView) findViewById(R.id.level);
         _levelIcon = (ImageView) findViewById(R.id.level_icon);
+        _toolbar = (Toolbar) findViewById(R.id.profile_toolbar);
 
-        setSupportActionBar(toolbar);
+
+        setSupportActionBar(_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setTitle("QuickBin");
+        _toolbar.setTitle("QuickBin");
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();

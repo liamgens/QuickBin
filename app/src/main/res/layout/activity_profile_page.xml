@@ -12,7 +12,7 @@
     tools:context=".activities.ProfilePage">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/detailed_bin_toolbar"
+        android:id="@+id/profile_toolbar"
         android:layout_width="match_parent"
         app:title=""
         android:layout_height="?attr/actionBarSize"
