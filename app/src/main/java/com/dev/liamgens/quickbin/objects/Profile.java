@@ -8,6 +8,9 @@ public class Profile {
     private String _displayName, _profileImg, _levelTitle;
     private int _level;
 
+    public Profile(){}
+
+
     public Profile(String displayName, int level){
         _displayName = displayName;
         _level = level;

@@ -15,6 +15,8 @@ public class ProfilePage extends AppCompatActivity {
     private ImageView _profilePicture;
     private TextView _displayName;
     private TextView _levelTitle;
+    private TextView _level;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,9 @@ public class ProfilePage extends AppCompatActivity {
 
         _levelTitle = (TextView) findViewById(R.id.level_title);
         _levelTitle.setText(p.get_levelTitle());
+
+        _level = (TextView) findViewById(R.id.level);
+        _level.setText("Level " + p.get_level());
 
 
 
