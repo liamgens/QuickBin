@@ -30,7 +30,7 @@ import com.squareup.picasso.Picasso;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.picasso.transformations.CropTransformation;
 
-public class DetailedBin extends AppCompatActivity implements View.OnClickListener{
+public class DetailedBin extends AppCompatActivity implements View.OnClickListener {
 
     String id;
     FirebaseDatabase database;
@@ -68,10 +68,10 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
             public void onClick(View v) {
                 new AlertDialog.Builder(DetailedBin.this)
                         .setPositiveButton("Yes, I have used it.", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                }
+                            }
                         })
                         .setNegativeButton("No, it doesn't exist.", new DialogInterface.OnClickListener() {
                             @Override
@@ -119,16 +119,15 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
         });
 
 
-
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.detailed_bin_show_on_map:
 
-                if(bin != null) {
-                    Uri gmmIntentUri = Uri.parse("geo:"+ bin.get_latitude() +","+ bin.get_longitude() + "?z=20" );
+                if (bin != null) {
+                    Uri gmmIntentUri = Uri.parse("geo:" + bin.get_latitude() + "," + bin.get_longitude() + "?z=20");
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                     mapIntent.setPackage("com.google.android.apps.maps");
                     if (mapIntent.resolveActivity(getPackageManager()) != null) {
@@ -136,35 +135,7 @@ public class DetailedBin extends AppCompatActivity implements View.OnClickListen
                     }
                 }
 
-            break;
+                break;
         }
     }
-
-//    public static class BeenHere extends DialogFragment {
-//        @Override
-//        public Dialog onCreateDialog(Bundle savedInstanceState) {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            builder.setPositiveButton("Yes, I have used it.", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//
-//                }
-//            })
-//                    .setNegativeButton("No, it doesn't exist.", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//
-//                        }
-//                    })
-//                    .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                        }
-//                    });
-//         //   AlertDialog dialog = builder.create();
-//
-//            return builder.create();
-//        }
-//    }
 }
