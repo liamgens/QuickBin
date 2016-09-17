@@ -104,6 +104,10 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
+                Bin bin = dataSnapshot.getValue(Bin.class);
+                bins.remove(bin);
+                binListAdapter.notifyDataSetChanged();
+
             }
 
             @Override
