@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class ProfilePage extends AppCompatActivity {
-    private ImageView _profilePicture;
+    private ImageView _profilePicture, _levelIcon;
     private TextView _displayName;
     private TextView _levelTitle;
     private TextView _level;
@@ -34,6 +34,8 @@ public class ProfilePage extends AppCompatActivity {
         _displayName = (TextView) findViewById(R.id.display_name);
         _levelTitle = (TextView) findViewById(R.id.level_title);
         _level = (TextView) findViewById(R.id.level);
+        _levelIcon = (ImageView) findViewById(R.id.level_icon);
+
 
 
 
@@ -48,6 +50,13 @@ public class ProfilePage extends AppCompatActivity {
                     Profile profile = dataSnapshot.getValue(Profile.class);
                     _level.setText("Level " + profile.get_level());
                     _levelTitle.setText(profile.get_levelTitle());
+                   if(_levelTitle.getText().equals("Sapling")){
+                        Picasso.with(getApplicationContext()).load(R.drawable.sapling_icon).transform(new CropCircleTransformation()).into(_levelIcon);
+                    }else if (_levelTitle.getText().equals("Tree")){
+                        Picasso.with(getApplicationContext()).load(R.drawable.tree_icon).transform(new CropCircleTransformation()).into(_levelIcon);
+                    }else{
+                       Picasso.with(getApplicationContext()).load(R.drawable.seed_icon).transform(new CropCircleTransformation()).into(_levelIcon);
+                   }
                 }
 
                 @Override
