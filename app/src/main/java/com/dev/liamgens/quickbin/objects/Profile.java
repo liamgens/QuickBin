@@ -10,9 +10,9 @@ public class Profile {
 
     public Profile(){}
 
-    public Profile(String displayName, int level){
+    public Profile(String displayName){
         _displayName = displayName;
-        _level = level;
+        _level = 0;
         set_level_title();
     }
 
