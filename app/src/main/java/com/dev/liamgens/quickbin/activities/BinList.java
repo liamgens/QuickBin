@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
 
     RecyclerView binList;
     FloatingActionButton addBin;
+    Toolbar toolbar;
     BinListAdapter binListAdapter;
     ArrayList<Bin> bins = new ArrayList<>();
     final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 231;
@@ -40,6 +42,7 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bin_list);
+
 
 
         // Here, thisActivity is the current activity
@@ -71,6 +74,9 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
 
         binList = (RecyclerView) findViewById(R.id.bin_list_recycler_view);
         addBin = (FloatingActionButton) findViewById(R.id.bin_list_add_bin);
+        toolbar = (Toolbar) findViewById(R.id.bin_list_toolbar);
+        toolbar.setTitle("QuickBin");
+        setSupportActionBar(toolbar);
         addBin.setOnClickListener(this);
 
         binListAdapter = new BinListAdapter(bins);
