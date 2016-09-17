@@ -1,6 +1,7 @@
 package com.dev.liamgens.quickbin.activities;
 
 import android.content.Intent;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,11 +31,15 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
     FloatingActionButton addBin;
     BinListAdapter binListAdapter;
     ArrayList<Bin> bins = new ArrayList<>();
+    CollapsingToolbarLayout tbl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bin_list);
+
+        tbl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        tbl.setTitle("QuickBin");
 
         binList = (RecyclerView) findViewById(R.id.bin_list_recycler_view);
         addBin = (FloatingActionButton) findViewById(R.id.bin_list_add_bin);
