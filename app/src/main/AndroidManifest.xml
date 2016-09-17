@@ -27,7 +27,7 @@
             android:value="@string/google_maps_key"
             />
 
-        <activity android:name=".activities.BinList">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.AddBin" />
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.BinList" />
         <activity
             android:name=".activities.DetailedBin"
             android:parentActivityName="com.dev.liamgens.quickbin.activities.ProfilePage"/>
