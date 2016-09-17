@@ -44,7 +44,7 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
     TextInputLayout titleLayout, descriptionLayout;
     Button addBin;
     RadioGroup binsRadioGroup;
-    Button addImage;
+    ImageButton addImage, addLocation;
     ImageView picture;
 
     boolean takenPicture = false;
@@ -72,11 +72,13 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
         descriptionLayout = (TextInputLayout) findViewById(R.id.add_bin_description_layout);
         addBin = (Button) findViewById(R.id.add_bin_button);
         binsRadioGroup = (RadioGroup) findViewById(R.id.add_bin_radio_group);
-        addImage = (Button) findViewById(R.id.add_bin_image);
+        addImage = (ImageButton) findViewById(R.id.add_bin_image);
+        addLocation = (ImageButton) findViewById(R.id.add_bin_location);
         picture = (ImageView) findViewById(R.id.add_bin_picture);
 
 
         addBin.setOnClickListener(this);
+        addLocation.setOnClickListener(this);
         addImage.setOnClickListener(this);
 
 
@@ -131,6 +133,11 @@ public class AddBin extends AppCompatActivity implements View.OnClickListener {
             case R.id.add_bin_image:
 
                 takePicture();
+
+                break;
+
+            case R.id.add_bin_location:
+
 
                 break;
         }
