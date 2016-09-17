@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll"
+            app:titleEnabled="false"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
@@ -35,6 +36,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detailed_bin_toolbar"
                 android:layout_width="match_parent"
+                app:title=""
                 android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
