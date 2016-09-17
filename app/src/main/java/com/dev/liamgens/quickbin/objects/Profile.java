@@ -1,4 +1,4 @@
-package com.dev.liamgens.quickbin;
+package com.dev.liamgens.quickbin.objects;
 
 /**
  * Created by liamgensel on 9/16/16.
