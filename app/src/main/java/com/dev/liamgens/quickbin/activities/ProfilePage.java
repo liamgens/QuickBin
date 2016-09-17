@@ -14,6 +14,7 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 public class ProfilePage extends AppCompatActivity {
     private ImageView _profilePicture;
     private TextView _displayName;
+    private TextView _levelTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +23,15 @@ public class ProfilePage extends AppCompatActivity {
         Picasso.with(this).load("https://lh3.googleusercontent.com/Xb_HzSiWAsYDy-9uB03fVlFrAnUx1SRmD2DwB2JAvBBANBvypC03HR8Mnf7RNSg_iu8C8vl3SA=w5760-h3600-rw-no").
                 transform(new CropCircleTransformation()).into(_profilePicture);
 
-        Profile p = new Profile();
-        p.set_displayName("Liam Gensel");
+        Profile p = new Profile("Liam Gensel", 6);
 
         _displayName = (TextView) findViewById(R.id.display_name);
+        _displayName.setText(p.get_displayName());
+
+        _levelTitle = (TextView) findViewById(R.id.level_title);
+        _levelTitle.setText(p.get_levelTitle());
+
+
 
 
     }

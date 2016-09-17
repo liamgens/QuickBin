@@ -8,8 +8,10 @@ public class Profile {
     private String _displayName, _profileImg, _levelTitle;
     private int _level;
 
-    public Profile(){
-
+    public Profile(String displayName, int level){
+        _displayName = displayName;
+        _level = level;
+        set_level_title();
     }
 
     public Profile(String displayName, String profileImg, int level){
@@ -17,7 +19,6 @@ public class Profile {
         _profileImg = profileImg;
         _level = level;
         set_level_title();
-
 
     }
 
@@ -50,5 +51,8 @@ public class Profile {
         if(level >= 1 && level < 5){ _levelTitle = "Trash"; }
         else if(level >= 5 && level < 10){ _levelTitle = "Compost"; }
         else if(level >= 10){ _levelTitle = "Renewable"; }
+    }
+    public String get_levelTitle() {
+        return _levelTitle;
     }
 }
