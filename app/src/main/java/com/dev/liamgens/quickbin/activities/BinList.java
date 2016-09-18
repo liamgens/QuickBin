@@ -78,12 +78,6 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
                 // result of the request.
             }
         }
-
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        longitude = location.getLongitude();
-        latitude = location.getLatitude();
-
         binList = (RecyclerView) findViewById(R.id.bin_list_recycler_view);
         addBin = (FloatingActionButton) findViewById(R.id.bin_list_add_bin);
         toolbar = (Toolbar) findViewById(R.id.bin_list_toolbar);
