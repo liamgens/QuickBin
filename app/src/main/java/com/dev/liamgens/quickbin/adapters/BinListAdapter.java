@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dev.liamgens.quickbin.R;
 import com.dev.liamgens.quickbin.objects.Bin;
@@ -67,17 +68,17 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
 
         switch (bin.get_binType()){
             case 0 :
-                Picasso.with(context).load(R.drawable.ic_delete_black_24dp).into(holder.type);
+                Picasso.with(context).load(R.drawable.garbage).into(holder.type);
 
                 break;
 
             case 1 :
-                Picasso.with(context).load(R.drawable.ic_delete_black_24dp).into(holder.type);
+                Picasso.with(context).load(R.drawable.recycling).into(holder.type);
 
                 break;
 
             case 2 :
-                Picasso.with(context).load(R.drawable.ic_delete_black_24dp).into(holder.type);
+                Picasso.with(context).load(R.drawable.recycling_center).into(holder.type);
 
                 break;
         }
