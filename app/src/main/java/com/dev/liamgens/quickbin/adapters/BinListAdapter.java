@@ -25,13 +25,14 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
     Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, description;
+        public TextView title, description, distance;
         public ImageView verify, type;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.bin_list_item_title);
             description = (TextView) view.findViewById(R.id.bin_list_item_description);
+            distance = (TextView) view.findViewById(R.id.distance);
             verify = (ImageView) view.findViewById(R.id.verify);
             type = (ImageView) view.findViewById(R.id.bin_list_item_type);
         }
@@ -56,6 +57,7 @@ public class BinListAdapter extends RecyclerView.Adapter<BinListAdapter.MyViewHo
         final Bin bin = binList.get(position);
         holder.title.setText(bin.get_title());
         holder.description.setText(bin.get_description());
+        holder.distance.setText(bin.getDistance() + " mi");
 
         if(bin.get_verifyCounter() >= 5){
             holder.verify.setColorFilter(Color.parseColor("#4CAF50"));

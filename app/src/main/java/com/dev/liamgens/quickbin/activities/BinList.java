@@ -1,8 +1,11 @@
 package com.dev.liamgens.quickbin.activities;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BinList extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,6 +41,9 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
     BinListAdapter binListAdapter;
     ArrayList<Bin> bins = new ArrayList<>();
     final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 231;
+
+    double longitude = 0;
+    double latitude = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +79,11 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
             }
         }
 
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        longitude = location.getLongitude();
+        latitude = location.getLatitude();
+
         binList = (RecyclerView) findViewById(R.id.bin_list_recycler_view);
         addBin = (FloatingActionButton) findViewById(R.id.bin_list_add_bin);
         toolbar = (Toolbar) findViewById(R.id.bin_list_toolbar);
@@ -92,7 +104,9 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Bin bin = dataSnapshot.getValue(Bin.class);
+                bin.setDistance(distance(bin.get_latitude(), bin.get_longitude(), latitude, longitude, "M"));
                 bins.add(bin);
+                Collections.sort(bins);
                 binListAdapter.notifyDataSetChanged();
             }
 
@@ -163,5 +177,34 @@ public class BinList extends AppCompatActivity implements View.OnClickListener{
 
                 break;
         }
+    }
+
+    private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        if (unit == "K") {
+            dist = dist * 1.609344;
+        } else if (unit == "N") {
+            dist = dist * 0.8684;
+        }
+
+        return (dist);
+    }
+
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	/*::	This function converts decimal degrees to radians						 :*/
+	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	/*::	This function converts radians to decimal degrees						 :*/
+	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
     }
 }

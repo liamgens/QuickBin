@@ -3,11 +3,11 @@ package com.dev.liamgens.quickbin.objects;
 /**
  * Created by liamgensel on 9/16/16.
  */
-public class Bin {
+public class Bin implements Comparable{
 
     private int _binType, _verifyCounter;
     private String _user, _title, _description, _binPicture, _date, _id;
-    private double _latitude, _longitude;
+    private double _latitude, _longitude, distance = 0;
 
     public Bin(){
 
@@ -115,6 +115,29 @@ public class Bin {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public double getDistance(){
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    @Override
+    public int compareTo(Object another) {
+
+        Bin bin = (Bin) another;
+        if(bin.getDistance() < getDistance()){
+            return -1;
+        }
+
+        if(bin.getDistance() > getDistance()){
+            return 1;
+        }
+
+        return 0;
     }
 }
 
