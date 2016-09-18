@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1072351279967-rv7h548cnj28lp461f12abt02ulfa0bh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.liamgens.quickbin",
+            "certificate_hash": "A611592C3ABEEFDFB9A4186AC14585D1A117A35B"
+          }
+        },
+        {
           "client_id": "1072351279967-d8e7cc1u35raihodd8sprd5o7vpdvs23.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
